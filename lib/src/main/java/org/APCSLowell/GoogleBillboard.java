@@ -8,7 +8,10 @@ public class GoogleBillboard {
         if (n <= 1) {
             return false;
         }
-        for (long i = 0; i*i < n; i++) {
+        if (n == 2) {
+            return true;
+        }
+        for (long i = 2; i <= (long)Math.sqrt(n); i++) {
             if (n%i == 0) {
                 return false;
             }
@@ -17,11 +20,11 @@ public class GoogleBillboard {
     }   
     public long firstPrimeNumberIn(String n) {
         for (int i = 0; i < n.length(); i++) {
-            if (isPrime(Long.parseLong(n.substring(i,i+1)))) {
-                return Long.parseLong(n.substring(i,i+1));
+            long value = Long.parseLong(n.substring(i, i + 10));
+            if (isPrime(value)) {
+                return value;
             }
         }
         return -1;
     }
 }
-
